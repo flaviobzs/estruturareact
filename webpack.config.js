@@ -7,7 +7,7 @@ module.exports = {
     filename: "bundle.js" //arquivo onde será salvo
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "public")
+    contentBase: path.resolve(__dirname, "public") //local onde encontrara o arquivo para atualizar suas informações quando salvar a aplicação
   },
   module: {
     rules: [
@@ -17,6 +17,14 @@ module.exports = {
         use: {
           loader: "babel-loader" //tranpilar codigo dessa aplicação
         }
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
+      },
+      {
+        test: /.*\.(git|png|jpe?g)$/i,
+        use: { loader: "file-loader" }
       }
     ]
   }
