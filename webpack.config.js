@@ -6,6 +6,9 @@ module.exports = {
     path: path.resolve(__dirname, "public"), // local onde sera lançado as informações traduzidas
     filename: "bundle.js" //arquivo onde será salvo
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, "public")
+  },
   module: {
     rules: [
       {
