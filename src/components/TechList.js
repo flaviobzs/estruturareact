@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import TechItem from "./TechItem";
+
 class TechList extends Component {
   // constructor(){
   //   this.state = {
@@ -15,6 +17,9 @@ class TechList extends Component {
     newTech: "",
     techs: ["NodeJS", "ReactJS", "React native"]
   };
+
+  //propiedades de um componete de classe ficam armazenadas no
+  //this.props.NOME
 
   handleInputChange = e => {
     //this.state.newTech = e.target.value;
@@ -46,13 +51,18 @@ class TechList extends Component {
         <h1>{this.state.newTech}</h1>
         <ul>
           {this.state.techs.map(tech => (
-            <li key={tech}>
-              {tech}
-              {/* chamar a função dentro de outra função porque quando montado o componete, ja seria chamado automaticamente */}
-              <button onClick={() => this.handleDelete(tech)} type="button">
-                Remover
-              </button>
-            </li>
+            <TechItem
+              key={tech}
+              tech={tech}
+              onDelete={() => this.handleDelete(tech)}
+            />
+            // <li key={tech}>
+            //   {tech}
+            //   {/* chamar a função dentro de outra função porque quando montado o componete, ja seria chamado automaticamente */}
+            //   <button onClick={() => this.handleDelete(tech)} type="button">
+            //     Remover
+            //   </button>
+            // </li>
           ))}
           {/* <li>X</li> */}
           {/* <li>Y</li>  */}
